@@ -1,10 +1,43 @@
+// definindo o strict mode
+'use strict'
+
+//definindo imports
+const express = require('express')
+const cors = require('cors')
+const config = require('./config')
+const trainerRoutes = require('./routes/trainer-routes')
+
+// inicializando o express
+const app = express()
+
+//definindo a utilizaçao de JSON no corpo da requisiçao
+// (body parser)
+app.use(express.json())
+
+//definindo a utilização do cors
+// (frontend)
+app.use(cors())
+
+// utilizando as rotas para treinadores
+app.use('/api', trainerRoutes.routes)
+
+//definindo a porta onde o servidor esta ouvindo
+app.listen(config.port, () => console.log('API rodando em http://localhost:' + config.port))
+
+
+
+
+
+
+
 // Definindo imports
-const express = require("express");
+/*const express = require("express");
 const cors = require("cors");
 const firebase = require("firebase");
 
 const firebaseConfig = {
     apiKey: "AIzaSyD7P07gnaxHU5fGy9fOvNzw44cgt1qh77I",
+})
     authDomain: "node-firebase-rest-api-5d7cc.firebaseapp.com",
     projectId: "node-firebase-rest-api-5d7cc",
     storageBucket: "node-firebase-rest-api-5d7cc.appspot.com",
@@ -89,7 +122,6 @@ app.post('/', async (req, res) => {
     res.status(201).send({
         msg: 'Usuário salvo!'
     });
-})
 
 // ATUALIZANDO UM DOCUMENTO NA COLEÇÃO
 app.put("/:id", async (req, res) => {
@@ -122,3 +154,4 @@ app.delete('/:id', async (req, res) => {
 app.listen(3000, () => {
     console.log('API rodando em http://localhost:3000')
 });
+*/
