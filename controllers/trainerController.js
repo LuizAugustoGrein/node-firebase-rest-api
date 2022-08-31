@@ -32,6 +32,7 @@ const getAllTrainers = async (req,res,next) => {
         res.status(404).send('Não há treinadores cadastrados!')
       } else {
         data.forEach(doc => {
+          // para cada documento do banco sera criando um novo objeto da classe Trainer
             const trainer = new Trainer(
                 doc.id,
                 doc.data().name,
