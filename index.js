@@ -6,6 +6,7 @@ const express = require('express')
 const cors = require('cors')
 const config = require('./config')
 const trainerRoutes = require('./routes/trainer-routes')
+const pokemonRoutes = require('./routes/pokemon-routes')
 
 // inicializando o express
 const app = express()
@@ -20,6 +21,7 @@ app.use(cors())
 
 // utilizando as rotas para treinadores
 app.use('/api', trainerRoutes.routes)
+app.use('/api', pokemonRoutes.routes)
 
 //definindo a porta onde o servidor esta ouvindo
 app.listen(config.port, () => console.log('API rodando em http://localhost:' + config.port))

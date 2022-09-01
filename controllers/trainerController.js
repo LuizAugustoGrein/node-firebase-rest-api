@@ -18,6 +18,7 @@ const addTrainer = async(req,res,next) => {
       res.status(400).send(error.message)
     }
 }
+
 //criando um metodo para listar todos os trainadores
 const getAllTrainers = async (req,res,next) => {
     try{
@@ -53,6 +54,7 @@ const getAllTrainers = async (req,res,next) => {
       res.status(400).send(error.message)
     }
 }
+
 // criando o metodo para listar um treinador especifico
 const getTrainer = async (req, res, next) => {
   try {
@@ -86,13 +88,14 @@ const updateTrainer = async (req, res, next) => {
     const trainer = await firestore.collection('trainers').doc(id)
     //realizando atualizaçao
     await trainer.update(data)
-    res.status(201).send('Treinadoe atualizado com sucesso')
+    res.status(201).send('Treinador atualizado com sucesso')
   } catch (error) {
     res.status(400).send(error.message)
   }
 }
+
 //criando um metodo para excluir um treinador especifico
-const deleteTraier = async (req, res, next) => {
+const deleteTrainer = async (req, res, next) => {
   try {
   //criando um objeto par receber o parametro id da requisuçao
   const id = req.params.id
@@ -109,5 +112,5 @@ module.exports = {
   getAllTrainers,
   getTrainer,
   updateTrainer,
-  deleteTraier
+  deleteTrainer
 }
